@@ -1,0 +1,6 @@
+<h1>Welcome to the root page</h1>
+
+<% if user_signed_in? %>
+    <h1> Welcome <%=current_user.name %></h1>
+    <%= link_to('Salir', logout_path) %>
+<% end %>

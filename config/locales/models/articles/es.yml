@@ -1,0 +1,25 @@
+es:
+  activerecord:
+    models:
+      article:
+        one: 'Articulo'
+        other: 'Articulos'
+    attributes:
+      article:
+        title: 'Titulo'
+        body: 'Texto'
+    errors:
+      models:
+        article:
+          attributes:
+            title:
+              blank: 'Este es un campo requerido'
+            body:
+              blank: 'Este es un campo requerido'
+              too_short: 'El campo debe de contener minimo 10 carácteres'
+  helpers: 
+    submit:
+      article:
+        create: 'Guardar'
+  article:
+    errors: 'Pararece que algo salio mal'

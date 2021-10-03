@@ -1,0 +1,37 @@
+<h1> Crear usuario </h1>
+
+<%= form_with model: @user do |form| %>
+
+    <% if @user.errors.any? %>
+        <p> <%= t 'user.errors'%></p>
+    <% end %>
+
+    <div>
+    <%= form.label :name %> <br>
+    <%= form.text_field :name %> <br>
+    <% if @user.errors[:name].any? %>
+        <div> <%= @user.errors[:name].first %></div>
+    <% end %>
+    </div>
+    
+    <div>
+    <%= form.label :email %> <br>
+    <%= form.text_field :email %> <br>
+    <% if @user.errors[:email].any? %>
+        <div> <%= @user.errors[:email].first %> </div>
+    <% end %>
+    </div>
+
+    <div>
+    <%= form.label :password %> <br>
+    <%= form.password_field :password %> <br>  
+    <% if @user.errors[:password].any? %>
+        <div> <%= @user.errors[:password].first %></div>
+    <% end %> 
+    </div>
+
+    <div>
+    <%= form.submit %>
+    </div>
+
+<% end %>

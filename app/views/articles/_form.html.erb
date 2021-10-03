@@ -1,0 +1,26 @@
+<%= form_with model: @article do |form| %>
+
+    <% if @article.errors.any? %>
+        <p> <%= t 'article.errors'%></p>
+    <% end %>
+
+    <div>
+        <%= form.label :title %> <br>
+        <%= form.text_field :title %>
+        <% if @article.errors[:title].any? %>
+            <div> <%= @article.errors[:title].first %></div>
+        <% end %> 
+    </div>
+
+    <div>
+        <%= form.label :body %> <br>
+        <%= form.text_area :body %> 
+        <% if @article.errors[:body] %>
+            <div> <%= @article.errors[:body].first %></div>
+        <% end %>
+    </div>
+    
+    <div>
+        <%= form.submit %>
+
+<% end %>

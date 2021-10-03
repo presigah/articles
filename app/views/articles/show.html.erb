@@ -1,0 +1,37 @@
+    <h1>Articles show</h1>
+
+        <% if @article.user_id!=nil %>
+            <h3><%=name_user(@article.user_id)%></h3> 
+        <% end %>
+    <h1><%= @article.title %></h1>
+    <h3><%= @article.body %></h3>
+
+    <% if user_signed_in?  %>
+        <% if @article.user_id == current_user.id %>
+            <li> <%= link_to 'Edit', edit_article_path(@article) %></li>
+            <li> <%= link_to 'Destroy', article_path(@article), method: :delete, data: {comfirm: "Are you sure?"} %></li>
+        <% end %>    
+    <% end %>
+
+    <h2>Comments</h2>
+    <% @article.comments.each do |comment| %>
+
+    <p>
+        <% if comment.user!=nil %>
+            <h3><%=name_user(comment.user)%>:  <%= comment.body %></h3> 
+        <% end %>
+    </p>
+
+    <% end %>
+
+    <h2>Add a comment:</h2>
+    <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+    <p>
+        <%= form.label :body %><br>
+        <%= form.text_area :body %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+    <% end %>
+

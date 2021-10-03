@@ -1,0 +1,28 @@
+es:
+  activerecord:
+    models:
+      user:
+        one: 'Articulo'
+        other: 'Articulos'
+    attributes:
+      user:
+        name: 'Titulo'
+        email: 'Texto'
+        password: 'Contraseña'
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: 'Este es un campo requerido'
+            email:
+              blank: 'Este es un campo requerido'
+              taken: 'El correo electrónico'
+            password:
+              blank: 'Este es un campo requerido'
+  helpers:
+    submit:
+      user:
+        create: 'Guardar'
+  user:
+    errors: 'Parece que algo salio mal'
