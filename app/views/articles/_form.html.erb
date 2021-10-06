@@ -19,8 +19,12 @@
             <div> <%= @article.errors[:body].first %></div>
         <% end %>
     </div>
-    
+
     <div>
+    <%= form.label :description %> <br>
+    <%= form.rich_text_area :description %> 
+    </div>
+    
         <%= form.submit %>
 
 <% end %>

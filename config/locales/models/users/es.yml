@@ -6,8 +6,8 @@ es:
         other: 'Articulos'
     attributes:
       user:
-        name: 'Titulo'
-        email: 'Texto'
+        name: 'Nombre'
+        email: 'Correo eletrónico'
         password: 'Contraseña'
     errors:
       models:

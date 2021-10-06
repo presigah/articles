@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
     def name_user (valor)
         @user = User.find(valor)
-        return @user = @user.name
+        return @user
     end
 
     def authetificate_user!

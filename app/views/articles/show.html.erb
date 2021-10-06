@@ -1,11 +1,14 @@
     <h1>Articles show</h1>
 
         <% if @article.user_id!=nil %>
-            <h3><%=name_user(@article.user_id)%></h3> 
+            <h3><%=name_user(@article.user_id).name%></h3> 
         <% end %>
     <h1><%= @article.title %></h1>
     <h3><%= @article.body %></h3>
-
+    <% if !@article.description.empty? %>
+     <h5><%= @article.description %></h5>
+    <% end %>
+    
     <% if user_signed_in?  %>
         <% if @article.user_id == current_user.id %>
             <li> <%= link_to 'Edit', edit_article_path(@article) %></li>
@@ -15,10 +18,13 @@
 
     <h2>Comments</h2>
     <% @article.comments.each do |comment| %>
-
+    
     <p>
         <% if comment.user!=nil %>
-            <h3><%=name_user(comment.user)%>:  <%= comment.body %></h3> 
+            <% if name_user(comment.user).avatar.attached? %>
+            <%= image_tag name_user(comment.user).avatar %>
+            <% end %>
+            <h3><%=name_user(comment.user).name%>:  <%= comment.body %></h3> 
         <% end %>
     </p>
 
