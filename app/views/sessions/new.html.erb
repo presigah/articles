@@ -1,17 +1,32 @@
-<h1>login</h1>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h1 class="text-center"> <%= t(".Login") %></h1>
+      <hr>
+      <div class="container">
+      
+        <%= form_tag login_path do |login|%>
 
-<%= form_tag login_path do |login|%>
+          <br>
+          <div> <br>
+            <%= label_tag :email, nil %>
+            <%= text_field_tag :email, nil, class:'form-control', placeholder:'example@mail.com', type:'email' %>
+          </div>
+          <br>
+          <div><br>
+            <%= label_tag :password, nil %>
+            <%= text_field_tag :password, nil, class:'form-control', type:'password', placeholder:'Password' %>
+          </div>
+            <br>
+          
+          <%= submit_tag nil, class:'btn btn-outline-dark' %>
+        <% end %>
 
-    <div>
-        <%= label_tag :email, nil %>
-        <%= text_field_tag :email, nil %>
+      </div>
     </div>
-
-    <div>
-        <%= label_tag :password, nil %>
-        <%= text_field_tag :password, nil %>
+    <div class="col-sm">
+      <img src="https://www.login.gov/assets/img/what-is-one-account@2x.png" class="img-fluid" alt="Responsive image">
     </div>
-
-    <%= submit_tag nil %>
-
-<% end %>
+  </div>
+</div>

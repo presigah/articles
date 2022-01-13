@@ -28,6 +28,7 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <div class='container'>
           <li class="nav-item"> 
+            <%= link_to('Books', books_path, class: 'btn btn-outline-secondary btn-lg') %>
             <%= link_to('Articles', articles_path, class: 'btn btn-outline-secondary btn-lg') %>
           </li>  
         </div>
@@ -40,9 +41,10 @@
             <% end %>
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to('Crear historia', new_article_path, class: 'dropdown-item') %>
+            <%= link_to('Profile', profile_path, class: 'dropdown-item') %>
+            <%= link_to('Write History', new_article_path, class: 'dropdown-item') %>
             <div class="dropdown-divider"></div>
-            <%= link_to('Salir', logout_path, class: 'dropdown-item') %>
+            <%= link_to('LogOut', logout_path, class: 'dropdown-item') %>
           </div>
         </li> 
         <%else%>
@@ -56,8 +58,9 @@
       </ul> 
     </div>
   </div>
-</nav>
+  </nav>
 
     <%= yield %>
+   
   </body>
 </html>

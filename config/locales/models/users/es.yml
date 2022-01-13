@@ -2,27 +2,28 @@ es:
   activerecord:
     models:
       user:
-        one: 'Articulo'
-        other: 'Articulos'
+        one: 'Usuario'
+        other: 'Usuarios'
     attributes:
       user:
         name: 'Nombre'
-        email: 'Correo eletrónico'
-        password: 'Contraseña'
+        email: 'Correo Electronico'
+        password: 'contraseña'  
     errors:
       models:
         user:
           attributes:
             name:
-              blank: 'Este es un campo requerido'
+              blank: 'Este campo es requerido'
             email:
-              blank: 'Este es un campo requerido'
-              taken: 'El correo electrónico'
-            password:
-              blank: 'Este es un campo requerido'
+              blank: 'Este campo es requerido'
+              taken: 'Correo electronico ya existe'
+            password: 
+              blank: 'Este campo es requerido'
   helpers:
     submit:
       user:
-        create: 'Guardar'
+        create: "Guardar"
   user:
-    errors: 'Parece que algo salio mal'
+    errors: 'Upps! algo salio mal'
+  

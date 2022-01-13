@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_05_212730) do
+ActiveRecord::Schema.define(version: 2022_01_13_153310) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -56,7 +56,24 @@ ActiveRecord::Schema.define(version: 2021_10_05_212730) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "category"
+    t.string "like"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.text "abstract"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "author"
+    t.string "edition"
+    t.string "type_book"
+    t.string "author_first_name"
+    t.string "author_last_name"
+    t.string "author_email"
+    t.string "author_job_title"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -65,7 +82,19 @@ ActiveRecord::Schema.define(version: 2021_10_05_212730) do
     t.integer "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "book_id"
     t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["book_id"], name: "index_comments_on_book_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "starts"
+    t.integer "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,4 +109,6 @@ ActiveRecord::Schema.define(version: 2021_10_05_212730) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "books"
+  add_foreign_key "reviews", "books"
 end

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    include Pagy::Backend
 
     helper_method :current_user
     helper_method :user_signed_in?
@@ -26,4 +27,8 @@ class ApplicationController < ActionController::Base
         @user = User.find_by(id: session[:user_id])
         return @user    
     end
+
+    def search_result
+        @article = Article.count
+    end 
 end
