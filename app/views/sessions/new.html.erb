@@ -5,9 +5,10 @@
       <h1 class="text-center"> <%= t(".Login") %></h1>
       <hr>
       <div class="container">
-      
+      <% if flash[:notice] %>
+      <div class="alert alert-danger" role="alert"><%= flash[:notice] %></div>
+     <% end %>   
         <%= form_tag login_path do |login|%>
-
           <br>
           <div> <br>
             <%= label_tag :email, nil %>

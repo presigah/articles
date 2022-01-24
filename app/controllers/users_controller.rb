@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             if !@user.avatar.attached?
                 @user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'placeholder-icon.png')), filename: 'default-image.png', content_type: 'image/png')
             end 
-            return redirect_to root_path
+            return redirect_to login_path
         end
 
         render :new

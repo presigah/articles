@@ -1,39 +1,53 @@
 
 <br>
 <br>
+ 
+<% if @user.errors.any? %>
+
+<div class="alert alert-danger" role="alert">
+<p> <%= t 'user.errors'%></p>
+
+<div>
+    <% if @user.errors[:name].any? %>
+        <spam> • User Name <%= @user.errors[:name].first %></spam>
+    <% end %> 
+</div>
+
+<div>
+    <% if @user.errors[:email].any? %>
+        <spam> • User Mail <%= @user.errors[:email].first %></spam>
+    <% end %> 
+</div>
+
+<div>
+    <% if @user.errors[:password].any? %>
+        <spam> • User Password <%= @user.errors[:password].first %></spam>
+    <% end %> 
+</div>
+</div>
+<% end %>
+
 
 <div class="container">
   <div class="row">
     <div class="col-sm">
     <h1 class="text-center"> <%= t(".singup") %></h1>
+
     <%= form_with model: @user do |form| %>
 
-        <% if @user.errors.any? %>
-            <p> <%= t 'user.errors'%></p>
-        <% end %>
-    
         <div>
         <%= form.label :name %> <br>
         <%= form.text_field :name, class:'form-control', placeholder:'Enter your full name' %> <br>
-        <% if @user.errors[:name].any? %>
-            <div> <%= @user.errors[:name].first %></div>
-        <% end %>
         </div>
         
         <div>
         <%= form.label :email %> <br>
         <%= form.text_field :email, class:'form-control', placeholder:'example@mail.com', type:'email' %> <br>
-        <% if @user.errors[:email].any? %>
-            <div> <%= @user.errors[:email].first %> </div>
-        <% end %>
         </div>
     
         <div>
         <%= form.label :password %> <br>
         <%= form.password_field :password, class:'form-control', type:'password', placeholder:'Password'%> <br>  
-        <% if @user.errors[:password].any? %>
-            <div> <%= @user.errors[:password].first %></div>
-        <% end %> 
         </div>
     
         <div>

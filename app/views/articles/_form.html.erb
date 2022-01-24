@@ -1,7 +1,28 @@
 <%= form_with model: @article do |form| %>
 
     <% if @article.errors.any? %>
+        <div class="alert alert-danger" role="alert">
         <p> <%= t 'article.errors'%></p>
+
+        <div>
+        <% if @article.errors[:title].any? %>
+            <spam> • Article Title <%= @article.errors[:title].first %></spam>
+        <% end %> 
+        </div>
+
+        <div>
+        <% if @article.errors[:body] %>
+            <spam> • Article Body <%= @article.errors[:body].first %></spam>
+        <% end %>
+        </div>
+
+        <div>
+        <% if @article.errors[:description] %>
+            <spam> • Description <%= @article.errors[:description].first %></spam>
+        <% end %>
+        </div>
+
+        </div>
     <% end %>
 
     <div class="container">
@@ -9,16 +30,10 @@
             <div>
                 <%= form.label :title %> <br>
                 <%= form.text_field :title, class:'form-control', placeholder:'Article`s title' %>
-                <% if @article.errors[:title].any? %>
-                    <div> <%= @article.errors[:title].first %></div>
-                <% end %> 
             </div>
         <div>
             <%= form.label :body %> <br>
             <%= form.text_area :body, class:'form-control', placeholder:'Article`s Abstract'%> 
-            <% if @article.errors[:body] %>
-                <div> <%= @article.errors[:body].first %></div>
-            <% end %>
         </div>
 
         <div class="container">
